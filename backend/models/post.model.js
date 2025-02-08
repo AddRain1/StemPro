@@ -7,6 +7,11 @@ const postSchema = new Schema({
     ref: "User",
     required: true,
   },
+  slug: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   subject: {
     type: String,
     required: true,
@@ -22,10 +27,12 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
-  comments: {
-    type: Schema.Types.ObjectId,
-    ref: "Comment",
-  },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Post", postSchema);

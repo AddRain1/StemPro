@@ -7,11 +7,6 @@ const commentSchema = new Schema({
     ref: "User", // Assuming you have a User model
     required: true,
   },
-  post: {
-    type: Schema.Types.ObjectId,
-    ref: "Post",
-    required: true,
-  },
   text: {
     type: String,
     required: true,
