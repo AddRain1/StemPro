@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "./ComputerScience.css";
+import { useNavigate, useParams } from "react-router-dom";
+import "./ProblemListPage.css";
 import axios from "axios";
-import ReplyIcon from '@mui/icons-material/Reply';
+import ReplyIcon from "@mui/icons-material/Reply";
 
-export const ComputerScience = () => {
+export const ProblemListPage = () => {
+  let { subject } = useParams();
   const navigate = useNavigate();
 
   const [posts, setPosts] = useState([]);
@@ -13,8 +14,9 @@ export const ComputerScience = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        console.log(subject);
         const res = await axios.get(
-          "http://localhost:3000/posts/subject/computer-science"
+          `http://localhost:3000/posts/subject/${subject}`
         );
         setPosts(res.data); // Update state with the fetched data
       } catch (error) {
@@ -25,20 +27,26 @@ export const ComputerScience = () => {
     };
 
     fetchPosts();
-  }, []);
+  }, [subject]);
 
   const handleProblemClick = (id) => {
-    navigate(`/computerscience/problem/${id}`);
+    navigate(`/${subject}/problem/${id}`);
   };
 
   if (loading) return <p>Loading...</p>;
 
+  if (subject === "computer-science") {
+    subject = "Computer Science";
+  }
+
   return (
     <div className="computer-science-container">
-        <button className="back-button" onClick={() => navigate('/')}>
-                <ReplyIcon fontSize="large"/>
-        </button>
-      <h1 className="computer-science-title">Computer Science Problems</h1>
+      <button className="back-button" onClick={() => navigate("/")}>
+        <ReplyIcon fontSize="large" />
+      </button>
+      <h1 className="computer-science-title">
+        {subject.charAt(0).toUpperCase() + subject.slice(1)} Problems
+      </h1>
       <div className="computer-science-problems">
         {posts.length === 0 ? (
           <p>No problems found</p>
