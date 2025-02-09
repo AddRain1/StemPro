@@ -16,22 +16,26 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Title Styling */
 .homepage-title {
   font-size: 24px;
   margin-bottom: 20px;
   color: #eeeeee;
 }
 
+/* Main button container */
 .button-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 15px; /* space between the buttons */
   color: #eeeeee;
 }
 
+/* Individual Button Styling */
 .homepage-button {
   font-size: 16px;
-  padding: 10px 20px; /* 10px top and bottom, 20px left and right */
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -41,7 +45,33 @@
 }
 
 .homepage-button:hover {
-  background-color: #76abae; /* Darkens the button's background color */
+  background-color: #76abae;
+}
+
+/* Auth Container - Positioned at the Top Right */
+.auth-container {
+  position: absolute;
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  display: flex;
+  gap: 15px; /* Space between buttons */
+}
+
+/* Auth Buttons (Register & Login) */
+.auth-button {
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  background-color: #eeeeee;
+  color: black;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: #76abae;
 }
 
 #createPostButton {
