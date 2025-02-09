@@ -23,21 +23,6 @@ export const CreatePost = () => {
     };
 
     fetchAuth();
-    // const checkAuth = async () => {
-    //     try {
-    //         const response = await axios.get("http://localhost:3000/users/auth/checkAuth", { withCredentials: true });
-    //         if (response.data.isAuthenticated) {
-    //             setUser(response.data.user);
-    //         } else {
-    //             setUser(null);
-    //         }
-    //     } catch (error) {
-    //         console.error("Authentication check failed:", error);
-    //         setUser(null);
-    //     }
-    // };
-
-    // checkAuth();
   }, []);
 
   const handleSubmit = async (e) => {
