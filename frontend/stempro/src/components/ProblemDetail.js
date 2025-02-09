@@ -3,12 +3,12 @@ import { Link, Routes, Route, useParams, useNavigate } from "react-router-dom";
 import Question from "./Question";
 import Solution from "./Solution";
 import Discussion from "./Discussion";
-import ReplyIcon from '@mui/icons-material/Reply';
+import ReplyIcon from "@mui/icons-material/Reply";
 import "./ProblemDetail.css";
 import axios from "axios";
 
 const ProblemDetail = () => {
-  const { id } = useParams();
+  const { id, subject } = useParams();
   const navigate = useNavigate();
   const [postDetails, setPostDetails] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,18 +29,6 @@ const ProblemDetail = () => {
     fetchDetails();
   }, [id]);
 
-  // Sample list of problems with names
-  // const problemList = {
-  //   1: "Reverse a String",
-  //   2: "Find the Largest Element in an Array",
-  //   3: "Binary Search Implementation",
-  //   4: "Check if a Number is Prime",
-  //   5: "Find the Fibonacci Sequence",
-  // };
-
-  // Get the problem name based on the ID from the URL
-  // const problemName = problemList[id] || "Unknown Problem";
-
   return (
     <div className="problem-detail-container">
       {/* Left Section: Backwards Arrow, Problem Name, Buttons, and Content */}
@@ -50,24 +38,25 @@ const ProblemDetail = () => {
           </button>
         <div className="button-container">
           <Link
-            to={`/computerscience/problem/${id}/question`}
+            to={`/${subject}/problem/${id}/question`}
             className="tab-button"
           >
             Question
           </Link>
           <Link
-            to={`/computerscience/problem/${id}/solution`}
+            to={`/${subject}/problem/${id}/solution`}
             className="tab-button"
           >
             Solution
           </Link>
           <Link
-            to={`/computerscience/problem/${id}/discussion`}
+            to={`/${subject}/problem/${id}/discussion`}
             className="tab-button"
           >
             Discussion
           </Link>
         </div>
+        <h2>{postDetails.question}</h2>
         {/* Display the selected section BELOW the buttons */}
         <div className="content-container">
           <Routes>
