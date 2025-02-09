@@ -16,36 +16,15 @@ const LogIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userData = { username, password };
-
-        try {
-            // Send a POST request to the backend API
-            await axios.post('http://localhost:3000/users/login', userData);
-            // console.log("Response:", response); // Debugging
-            // console.log("User registered:", response.data);  // Ensure `data` exists
-        
-            setSuccess('Log in successful!');
-            setUsername('');
-            setPassword('');
-            setIsAuthenticated(true);
-            
-        
-            navigate('/homepage')
-        } catch (err) {
-            // If there's an error, update the error state
-            setError('Log in failed. ' + err.response?.data || err.message);
-        }
-    };
-
-      if (response.status === 200) {
-        setSuccess("Log in successful!");
-        setUsername("");
-        setPassword("");
-        setIsAuthenticated(true);
-        console.log("Authenticated:", isAuthenticated);
+    try {
+      const res = await axios.post("http://localhost:3000/api/auth", userData);
+      if (res.status === 200) {
+        console.log("THIS ONE LOOK AT THIS", res);
+        console.log("Logged In");
         navigate("/homepage");
       }
-    } catch (err) {
-      setError("Log in failed. " + (err.response?.data || err.message));
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -80,11 +59,6 @@ const LogIn = () => {
           Log In
         </button>
       </form>
-
-      {/* Optional Register Button (uncomment if needed) */}
-      {/* {!isAuthenticated && (
-          <button className="register-button" onClick={() => navigate("/register")}>Register</button>
-      )} */}
     </div>
   );
 };
