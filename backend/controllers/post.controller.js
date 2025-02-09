@@ -11,7 +11,7 @@ export const getPostsBySubject = async (req, res) => {
 };
 
 export const getPost = async (req, res) => {
-  const post = await Post.findOne({ _id: req.params.postId });
+  const post = await Post.findById(req.params.postId);
   res.status(200).send(post);
 };
 

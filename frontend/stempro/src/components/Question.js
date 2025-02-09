@@ -1,13 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 
-const Question = () => {
-  const { id } = useParams();  // Get the problem ID from the URL
-
+const Question = ({ postDetails }) => {
   return (
     <div>
-      <h2>Problem {id}: Question</h2>
-      <p>This is where the problem question will be displayed.</p>
+      <h2>{postDetails.question}</h2>
+      <p>{postDetails.description}</p>
     </div>
   );
 };
