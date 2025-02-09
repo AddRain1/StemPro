@@ -76,11 +76,15 @@
 
 #createPostButton {
   position: absolute;
-  bottom: 28%; /* distance from the bottom of the page */
+  bottom: 100px; /* distance from the bottom of the page */
   left: 50%; /* position it in the center horizontally */
   transform: translateX(-50%); /* adjust for the element's width */
   justify-content: center;
   background-color: #eeeeee;
   width: 140px;
   height: 60px;
+}
+
+#createPostButton:hover {
+  background-color: #76abae;
 }

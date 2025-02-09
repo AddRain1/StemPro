@@ -44,7 +44,17 @@ const HomePage = () => {
     navigate("/chemistry");
   };
   const handleCreatePost = () => {
-    navigate("/createpost");
+    try {
+      if (user) {
+        navigate("/createpost");
+        return;
+      }
+      else {
+        alert("You must be logged in to create a post.");
+      }
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
   };
   const handleRegister = () => {
     navigate("/register");
