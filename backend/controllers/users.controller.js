@@ -24,10 +24,12 @@ import passport from '../lib/passport.js';
 
 export const register = async (req, res) => {
     try {
-        const { email, username, password, userId } = req.body;
+        // await User.collection.dropIndex("userId_1");
+        // console.log("Dropped index on userId");
+        const { email, username, password } = req.body;
 
         // Create a new user instance (without setting the password here)
-        const user = new User({ email, username, userId });
+        const user = new User({ email, username });
 
         // Register the user and pass the password separately to handle hashing
         const registeredUser = await User.register(user, password);
@@ -44,7 +46,7 @@ export const register = async (req, res) => {
                 user: {
                     username: registeredUser.username,
                     email: registeredUser.email,
-                    userId: registeredUser.userId,
+                    _id: registeredUser._id
                 }
             });
         });
@@ -87,7 +89,7 @@ export const login = (req, res, next) => {
                 user: {
                     username: user.username,
                     email: user.email,
-                    userId: user.userId,
+                    _id: user._id
                 },
             });
         });
