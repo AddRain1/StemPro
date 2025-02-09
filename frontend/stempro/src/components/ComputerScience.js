@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ComputerScience.css";
 import axios from "axios";
+import ReplyIcon from '@mui/icons-material/Reply';
 
 export const ComputerScience = () => {
   const navigate = useNavigate();
@@ -34,6 +35,9 @@ export const ComputerScience = () => {
 
   return (
     <div className="computer-science-container">
+        <button className="back-button" onClick={() => navigate('/')}>
+                <ReplyIcon fontSize="large"/>
+        </button>
       <h1 className="computer-science-title">Computer Science Problems</h1>
       <div className="computer-science-problems">
         {posts.length === 0 ? (

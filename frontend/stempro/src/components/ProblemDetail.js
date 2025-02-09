@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link, Routes, Route, useParams } from "react-router-dom";
+import { Link, Routes, Route, useParams, useNavigate } from "react-router-dom";
 import Question from "./Question";
 import Solution from "./Solution";
 import Discussion from "./Discussion";
+import ReplyIcon from '@mui/icons-material/Reply';
 import "./ProblemDetail.css";
 import axios from "axios";
 
 const ProblemDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [postDetails, setPostDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -41,9 +43,12 @@ const ProblemDetail = () => {
 
   return (
     <div className="problem-detail-container">
-      {/* Left Section: Problem Name, Buttons, and Content */}
-      <div className="problem-left">
-        {/* <h2>{postDetails.question}</h2>  */}
+      {/* Left Section: Backwards Arrow, Problem Name, Buttons, and Content */}
+        <div className="problem-left">
+          <button className="back-button" onClick={() => navigate('/computerscience')}>
+            <ReplyIcon fontSize="large"/>
+          </button>
+          <h2>{problemName}</h2>  {/* Display the problem name */}
         <div className="button-container">
           <Link
             to={`/computerscience/problem/${id}/question`}

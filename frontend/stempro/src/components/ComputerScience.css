@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: top;
     height: 100vh;
     background-color: white;
 }
@@ -11,12 +11,12 @@
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 20px;
-    text-align: center;
+    text-align: top;
 }
 
 .computer-science-problems {
     width: 400px;
-    height: 300px; /* Limit height to make it scrollable */
+    height: 500px; /* Limit height to make it scrollable */
     overflow-y: auto; /* Enable vertical scrolling */
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -37,4 +37,22 @@
 
 .computer-science-problem:hover {
     background-color: #e0e0e0;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: none;
+    display: flex;
+    align-items: center;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: #0056b3;
 }
