@@ -12,11 +12,6 @@ export const ComputerScience = () => {
         { id: 3, title: "Binary Search Implementation" },
         { id: 4, title: "Check if a Number is Prime" },
         { id: 5, title: "Find the Fibonacci Sequence" },
-        { id: 6, title: "Merge Two Sorted Arrays" },
-        { id: 7, title: "Implement a Stack Using Queues" },
-        { id: 8, title: "Find the First Non-Repeating Character" },
-        { id: 9, title: "Detect a Cycle in a Linked List" },
-        { id: 10, title: "Solve the Two Sum Problem" },
     ];
 
     const handleProblemClick = (id) => {
