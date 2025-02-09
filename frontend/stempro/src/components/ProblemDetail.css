@@ -77,3 +77,20 @@
     border-radius: 5px;
     resize: none;
 }
+
+.back-button {
+    right: 20px;
+    top: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: none;
+    display: flex;
+    align-items: center;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: #0056b3;
+}

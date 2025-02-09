@@ -3,6 +3,7 @@ import { Link, Routes, Route, useParams, useNavigate } from "react-router-dom";
 import Question from "./Question";
 import Solution from "./Solution";
 import Discussion from "./Discussion";
+import ReplyIcon from '@mui/icons-material/Reply';
 import "./ProblemDetail.css";
 
 const ProblemDetail = () => {
@@ -26,7 +27,7 @@ const ProblemDetail = () => {
       {/* Left Section: Backwards Arrow, Problem Name, Buttons, and Content */}
         <div className="problem-left">
           <button className="back-button" onClick={() => navigate('/computerscience')}>
-            <img src="/path/to/your/back-arrow-image.png" alt="Back" />
+            <ReplyIcon fontSize="large"/>
           </button>
           <h2>{problemName}</h2>  {/* Display the problem name */}
         <div className="button-container">

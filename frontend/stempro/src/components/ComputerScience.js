@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ComputerScience.css';
+import ReplyIcon from '@mui/icons-material/Reply';
 
 export const ComputerScience = () => {
     const navigate = useNavigate();
@@ -20,6 +21,9 @@ export const ComputerScience = () => {
 
     return (
         <div className="computer-science-container">
+            <button className="back-button" onClick={() => navigate('/')}>
+                <ReplyIcon fontSize="large"/>
+            </button>
             <h1 className="computer-science-title">Computer Science Problems</h1>
             <div className="computer-science-problems">
                 {problems.map((problem) => (
