@@ -8,7 +8,7 @@ import "./ProblemDetail.css";
 import axios from "axios";
 
 const ProblemDetail = () => {
-  const { id, subject } = useParams();
+  let { id, subject } = useParams();
   const navigate = useNavigate();
   const [postDetails, setPostDetails] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,6 +28,10 @@ const ProblemDetail = () => {
 
     fetchDetails();
   }, [id]);
+
+  if (subject === "Computer Science") {
+    subject = "computer-science";
+  }
 
   return (
     <div className="problem-detail-container">
@@ -56,6 +60,7 @@ const ProblemDetail = () => {
           </Link>
         </div>
         <h2>{postDetails.question}</h2>
+        <p>{postDetails.description}</p>
         {/* Display the selected section BELOW the buttons */}
         <div className="content-container">
           <Routes>
@@ -77,7 +82,7 @@ const ProblemDetail = () => {
 
       {/* Right Section: Notepad */}
       <div className="problem-right">
-        <h3>Notes</h3>
+        <h2>Notes</h2>
         <textarea
           className="notes-editor"
           placeholder="Type your thoughts here..."
