@@ -5,6 +5,11 @@ export const getPosts = async (req, res) => {
   res.status(200).send(posts);
 };
 
+export const getPostsBySubject = async (req, res) => {
+  const posts = await Post.find({ subject: req.params.subject });
+  res.status(200).send(posts);
+};
+
 export const getPost = async (req, res) => {
   const post = await Post.findOne({ _id: req.params.postId });
   res.status(200).send(post);
