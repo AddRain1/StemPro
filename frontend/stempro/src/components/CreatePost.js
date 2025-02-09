@@ -8,6 +8,7 @@ export const CreatePost = () => {
     const [question, setQuestion] = useState("");
     const [subject, setSubject] = useState("Computer Science");
     const [answer, setAnswer] = useState("");
+    const [description, setDescription] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -17,6 +18,7 @@ export const CreatePost = () => {
         const newPost = {
         question,
         subject,
+        description,
         answer: answer.trim() ? answer : "No answer provided",
         user: "67a7e621cb68382b624977a8", // Hardcoded user ID for now
         };
@@ -53,15 +55,23 @@ return (
           placeholder="Enter your question..." 
         />
 
+        {/* Description Input */}
+        <label>Description (Optional):</label>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Enter a description..."
+        ></textarea>
+
         {/* Category Dropdown */}
         <label>Subject:</label>
         <select value={subject} onChange={(e) => setSubject(e.target.value)}>
-          <option>Computer Science</option>
-          <option>Mathematics</option>
-          <option>Physics</option>
-          <option>Biology</option>
-          <option>Engineering</option>
-          <option>Chemistry</option>
+          <option>computer-science</option>
+          <option>mathematics</option>
+          <option>physics</option>
+          <option>biology</option>
+          <option>engineering</option>
+          <option>chemistry</option>
         </select>
 
         {/* Optional Answer */}
