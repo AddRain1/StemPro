@@ -23,6 +23,8 @@ export const AppRoutes = () => {
                 <Route path="/:subject" element={<ProblemListPage />} />
                 <Route path="/:subject/problem/:id/*" element={<ProblemDetail />} />
                 <Route path="/createpost" element={<CreatePost />} />
+                <Route path="/login" element={<LogIn />} />
+                <Route path="/register" element={<Register />} />
             </Routes>
         </Router>
     );
