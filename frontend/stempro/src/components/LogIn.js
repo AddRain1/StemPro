@@ -19,16 +19,16 @@ const LogIn = () => {
 
         try {
             // Send a POST request to the backend API
-            const response = await axios.post('http://localhost:3000/users/login', userData);
-            console.log("Response:", response); // Debugging
-            console.log("User registered:", response.data);  // Ensure `data` exists
-            if (response.status === 200) {
-                setSuccess('Log in successful!');
-                setUsername('');
-                setPassword('');
-                setIsAuthenticated(true);
-                console.log(isAuthenticated)
-            }
+            await axios.post('http://localhost:3000/users/login', userData);
+            // console.log("Response:", response); // Debugging
+            // console.log("User registered:", response.data);  // Ensure `data` exists
+        
+            setSuccess('Log in successful!');
+            setUsername('');
+            setPassword('');
+            setIsAuthenticated(true);
+            
+        
             navigate('/homepage')
         } catch (err) {
             // If there's an error, update the error state

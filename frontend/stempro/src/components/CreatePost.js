@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CreatePost.css";
 import { useNavigate } from "react-router-dom";
 import ReplyIcon from '@mui/icons-material/Reply';
@@ -9,18 +9,45 @@ export const CreatePost = () => {
     const [subject, setSubject] = useState("Computer Science");
     const [answer, setAnswer] = useState("");
     const [description, setDescription] = useState("");
+    const [user, setUser] = useState(null);  // Store logged-in user
     const navigate = useNavigate();
+
+    // Check if user is logged in when component mounts
+    useEffect(() => {
+    const checkAuth = async () => {
+        try {
+            const response = await axios.get("http://localhost:3000/users/auth/checkAuth", { withCredentials: true });
+            if (response.data.isAuthenticated) {
+                setUser(response.data.user);
+            } else {
+                setUser(null);
+            }
+        } catch (error) {
+            console.error("Authentication check failed:", error);
+            setUser(null);
+        }
+    };
+
+    checkAuth();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Check if user is logged in
+        if (!user) {
+          alert("You must be logged in to create a post.");
+          navigate("/login"); // Redirect to login page
+          return;
+      }
+
         // Create a new post object
         const newPost = {
-        question,
-        subject,
-        description,
-        answer: answer.trim() ? answer : "No answer provided",
-        user: "67a7e621cb68382b624977a8", // Hardcoded user ID for now
+          question,
+          subject,
+          description,
+          answer: answer.trim() ? answer : "No answer provided",
+          user: user._id, 
         };
         try {
         // Send a POST request to the server
@@ -31,6 +58,7 @@ export const CreatePost = () => {
             setQuestion("");
             setSubject("");
             setAnswer("");
+            setDescription("");
 
             navigate("/homepage");
         } catch (error) {

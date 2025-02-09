@@ -17,6 +17,8 @@ const HomePage = () => {
                     credentials: 'include', // Make sure cookies are sent
                 });
                 const data = await response.json();
+                console.log(data);
+                console.log(user)
                 if (data.isLoggedIn) {
                     setIsAuthenticated(true);
                     setUser(data.user);
@@ -30,6 +32,7 @@ const HomePage = () => {
 
         checkAuthentication();
     }, []); // Empty dependency array to only run once when the component mounts
+    
 
     const handleComputerScience = () => {
         navigate("/computer-science");
