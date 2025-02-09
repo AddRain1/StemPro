@@ -7,6 +7,8 @@
 }
 
 .homepage-box {
+  width: 75%; /* Set width to 75% of the viewport */
+  max-width: 900px; /* Optional: Set a max width to prevent it from being too large on big screens */
   text-align: center;
   background-color: #31363f;
   padding: 40px;
@@ -44,9 +46,11 @@
 
 #createPostButton {
   position: absolute;
-  bottom: 20%; /* distance from the bottom of the page */
+  bottom: 28%; /* distance from the bottom of the page */
   left: 50%; /* position it in the center horizontally */
   transform: translateX(-50%); /* adjust for the element's width */
   justify-content: center;
-  background-color: grey;
+  background-color: #eeeeee;
+  width: 140px;
+  height: 60px;
 }

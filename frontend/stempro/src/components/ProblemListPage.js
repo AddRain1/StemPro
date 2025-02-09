@@ -33,7 +33,14 @@ export const ProblemListPage = () => {
     navigate(`/${subject}/problem/${id}`);
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="computer-science-container">
+        <h1 className="computer-science-title">
+          {subject.charAt(0).toUpperCase() + subject.slice(1)} Problems
+        </h1>
+      </div>
+    );
 
   if (subject === "computer-science") {
     subject = "Computer Science";

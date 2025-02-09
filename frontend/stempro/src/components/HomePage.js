@@ -36,9 +36,7 @@ const HomePage = () => {
         <p className="homepage-title">
           StemPro is a centralized interview preparation platform designed to
           help students apply their academic knowledge to real-world industry
-          scenarios. Built with the MERN stack, the platform connects students
-          with industry-relevant problems curated by professionals, providing an
-          interactive space for discussion, learning, and skill-building.
+          scenarios.
         </p>
         <div className="button-container">
           <button className="homepage-button" onClick={handleComputerScience}>
@@ -64,7 +62,7 @@ const HomePage = () => {
             id="createPostButton"
             onClick={handleCreatePost}
           >
-            CreatePost
+            Create Post
           </button>
         </div>
       </div>
