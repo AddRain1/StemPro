@@ -9,6 +9,7 @@ import { Mathematics } from "./components/Mathematics.js";
 import { Physics } from "./components/Physics.js";
 import ProblemDetail from "./components/ProblemDetail.js";
 import Register from "./components/Register.js";
+import LogIn from "./components/LogIn.js";
 
 export const AppRoutes = () => {
     return (
@@ -25,6 +26,7 @@ export const AppRoutes = () => {
                 <Route path="/mathematics" element={<Mathematics />} />
                 <Route path="/physics" element={<Physics />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<LogIn />} />
             </Routes>
         </Router>
     )
