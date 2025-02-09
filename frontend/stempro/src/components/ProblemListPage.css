@@ -17,7 +17,7 @@
 
 .computer-science-problems {
   width: 400px;
-  height: 500px; /* Limit height to make it scrollable */
+  height: 80%; /* Limit height to make it scrollable */
   overflow-y: auto; /* Enable vertical scrolling */
   border: 1px solid #ccc;
   border-radius: 10px;
