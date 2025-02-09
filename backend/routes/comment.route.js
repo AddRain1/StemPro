@@ -13,6 +13,6 @@ router.get("/:postId", getCommentsFromPost);
 router.get("/user/:userId", getCommentsFromUser);
 router.get("/comment/:commentId", getComment);
 router.post("/", createComment);
-router.delete("/:id", deleteComment);
+router.delete("/comment/:commentId", deleteComment);
 
 export default router;
