@@ -47,11 +47,13 @@ export const register = async (req, res) => {
                     username: registeredUser.username,
                     email: registeredUser.email,
                     _id: registeredUser._id
-                }
+                },
+                isAuthenticated: true
             });
         });
     } catch (e) {
         // If an error occurs, send the error message in the response
+        console.error("Error during registration:", e);
         res.status(400).json({ message: 'Registration failed', error: e.message });
     }
 };
@@ -82,7 +84,7 @@ export const login = (req, res, next) => {
             if (err) {
                 return next(err);  // Handle any errors when logging in
             }
-
+            console.log("User logged in successfully:", user.username);
             // Successful login, send the user details and a message
             return res.status(200).json({
                 message: 'Login successful!',
@@ -91,6 +93,7 @@ export const login = (req, res, next) => {
                     email: user.email,
                     _id: user._id
                 },
+                isAuthenticated: true
             });
         });
     })(req, res, next);  // Call the passport authenticate function with the request and response

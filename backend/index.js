@@ -33,6 +33,23 @@ app.use((error, req, res, next) => {
   });
 });
 
+app.get('/isLoggedIn', (req, res) => {
+  try {
+    console.log(req.isAuthenticated)
+    if (req.isAuthenticated) {
+      console.log("Yay!")
+      res.json({ isLoggedIn: true, user: req.user });
+    } else {
+      console.log("whoa")
+      res.json({ isLoggedIn: false });
+    }
+  }
+  catch (err) {
+    console.error("Error in /isLoggedIn route:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 app.listen(3000, () => {
   connectDB();
   console.log("Server is running");
