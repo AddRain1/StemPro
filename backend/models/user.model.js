@@ -13,10 +13,6 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
 });
 userSchema.plugin(passportLocalMongoose);
 export default mongoose.model("User", userSchema);

@@ -8,10 +8,22 @@ import "./ProblemDetail.css";
 import axios from "axios";
 
 const ProblemDetail = () => {
-  let { id, subject } = useParams();
-  const navigate = useNavigate();
-  const [postDetails, setPostDetails] = useState([]);
-  const [loading, setLoading] = useState(true);
+    let { id, subject } = useParams();
+    const navigate = useNavigate();
+    const [postDetails, setPostDetails] = useState([]);
+    const [notes, setNotes] = useState("");
+
+    useEffect(() => {
+      const savedNotes = localStorage.getItem(`notes-${id}`);
+      if(savedNotes) {
+        setNotes(savedNotes);
+      }
+    }, [id]);
+
+    // save notes to local storage
+    useEffect(() => {
+      localStorage.setItem(`notes-${id}`, notes);
+    }, [notes, id]);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -21,17 +33,11 @@ const ProblemDetail = () => {
         setPostDetails(res.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchDetails();
   }, [id]);
-
-  if (subject === "Computer Science") {
-    subject = "computer-science";
-  }
 
   return (
     <div className="problem-detail-container">
@@ -87,6 +93,8 @@ const ProblemDetail = () => {
         <textarea
           className="notes-editor"
           placeholder="Type your thoughts here..."
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
         />
       </div>
     </div>
