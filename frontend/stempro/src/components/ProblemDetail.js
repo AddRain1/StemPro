@@ -44,11 +44,11 @@ const ProblemDetail = () => {
   return (
     <div className="problem-detail-container">
       {/* Left Section: Backwards Arrow, Problem Name, Buttons, and Content */}
-        <div className="problem-left">
-          <button className="back-button" onClick={() => navigate('/computerscience')}>
-            <ReplyIcon fontSize="large"/>
-          </button>
-          <h2>{problemName}</h2>  {/* Display the problem name */}
+      <div className="problem-left">
+        <button className="back-button" onClick={() => navigate('/computerscience')}>
+          <ReplyIcon fontSize="large" />
+        </button>
+
         <div className="button-container">
           <Link
             to={`/computerscience/problem/${id}/question`}
