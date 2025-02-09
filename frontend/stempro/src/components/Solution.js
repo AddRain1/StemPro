@@ -1,13 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 
-const Solution = () => {
-  const { id } = useParams();
-
+const Solution = ({ postDetails }) => {
   return (
     <div>
-      <h2>Problem {id}: Solution</h2>
-      <p>This is where the solution will be explained.</p>
+      <h2>{postDetails.question}</h2>
+      <p>{postDetails.answer}</p>
     </div>
   );
 };
