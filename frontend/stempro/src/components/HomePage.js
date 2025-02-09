@@ -20,7 +20,6 @@ const HomePage = () => {
         setUser(res.data);
       } catch (error) {
         console.log("It failed");
-        // console.error("Authentication check failed:", error);
       }
     };
     fetchAuth();

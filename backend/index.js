@@ -6,7 +6,6 @@ import commentRouter from "./routes/comment.route.js";
 import corsMiddleware from "./middlewares/corsMiddleware.js";
 import passport from "passport";
 import session from "express-session";
-// import "./lib/passport.js";
 import "./strategies/local-strategy.js";
 import cors from "cors";
 
