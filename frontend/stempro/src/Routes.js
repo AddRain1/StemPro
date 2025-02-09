@@ -8,6 +8,8 @@ import HomePage from "./components/HomePage.js";
 import { NotFoundPage } from "./components/NotFoundPage.js";
 import { ProblemListPage } from "./components/ProblemListPage.js";
 import ProblemDetail from "./components/ProblemDetail.js";
+import { CreatePost } from "./components/CreatePost.js";
+
 
 export const AppRoutes = () => {
   return (
@@ -18,6 +20,7 @@ export const AppRoutes = () => {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/:subject" element={<ProblemListPage />} />
         <Route path="/:subject/problem/:id/*" element={<ProblemDetail />} />
+        <Route path="/createpost" element={<CreatePost />} />
       </Routes>
     </Router>
   );
