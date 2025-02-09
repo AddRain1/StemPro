@@ -9,7 +9,6 @@ import { Mathematics } from "./components/Mathematics.js";
 import { Physics } from "./components/Physics.js";
 import ProblemDetail from "./components/ProblemDetail.js";
 
-
 export const AppRoutes = () => {
     return (
         <Router>
@@ -18,7 +17,7 @@ export const AppRoutes = () => {
                 <Route path="/homepage" exact element={<HomePage />} />
                 <Route path="*" element={<NotFoundPage />} />
                 <Route path="/computerscience" element={<ComputerScience />} />
-                <Route path="/computerscience/problem/:id" element={<ProblemDetail />} />
+                <Route path="/computerscience/problem/:id/*" element={<ProblemDetail />} />
                 <Route path="/biology" element={<Biology />} />
                 <Route path="/chemistry" element={<Chemistry />} />
                 <Route path="/engineering" element={<Engineering />} />
