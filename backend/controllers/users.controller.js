@@ -99,6 +99,20 @@ export const login = (req, res, next) => {
     })(req, res, next);  // Call the passport authenticate function with the request and response
 };
 
+export const checkAuth = (req, res) => {
+    if (req.isAuthenticated) {  // Passport checks if session exists
+        return res.status(200).json({
+            isAuthenticated: true,
+            user: {
+                username: req.user.username,
+                email: req.user.email,
+                _id: req.user._id
+            }
+        });
+    } else {
+        return res.status(401).json({ isAuthenticated: false, message: "User not logged in" });
+    }
+};
 
 export const logout = (req, res) => {
     req.logout(function (err) {

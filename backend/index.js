@@ -35,14 +35,16 @@ app.use((error, req, res, next) => {
 
 app.get('/isLoggedIn', (req, res) => {
   try {
-    console.log(req.isAuthenticated)
+    console.log("This is the beginning")
+    // console.log(req.isAuthenticated)
     if (req.isAuthenticated) {
       console.log("Yay!")
-      res.json({ isLoggedIn: true, user: req.user });
+      res.json({ isLoggedIn: true, user: req._user });
     } else {
       console.log("whoa")
       res.json({ isLoggedIn: false });
     }
+    console.log("This is the end")
   }
   catch (err) {
     console.error("Error in /isLoggedIn route:", err);
