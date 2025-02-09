@@ -38,4 +38,13 @@
 
 .homepage-button:hover {
     background-color: rgb(225, 215, 215); /* Darkens the button's background color */
-  }
+}
+
+#createPostButton {
+    position: absolute;
+    bottom: 20%; /* distance from the bottom of the page */
+    left: 50%; /* position it in the center horizontally */
+    transform: translateX(-50%); /* adjust for the element's width */
+    justify-content: center;
+    background-color: grey;
+}

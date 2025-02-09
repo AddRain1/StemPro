@@ -48,7 +48,6 @@ const ProblemDetail = () => {
           <button className="back-button" onClick={() => navigate('/computerscience')}>
             <ReplyIcon fontSize="large"/>
           </button>
-          <h2>{problemName}</h2>  {/* Display the problem name */}
         <div className="button-container">
           <Link
             to={`/computerscience/problem/${id}/question`}

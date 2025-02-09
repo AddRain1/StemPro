@@ -8,6 +8,8 @@ import { Engineering } from "./components/Engineering.js";
 import { Mathematics } from "./components/Mathematics.js";
 import { Physics } from "./components/Physics.js";
 import ProblemDetail from "./components/ProblemDetail.js";
+import { CreatePost } from "./components/CreatePost.js";
+
 
 export const AppRoutes = () => {
     return (
@@ -23,6 +25,7 @@ export const AppRoutes = () => {
                 <Route path="/engineering" element={<Engineering />} />
                 <Route path="/mathematics" element={<Mathematics />} />
                 <Route path="/physics" element={<Physics />} />
+                <Route path="/createPost" element={<CreatePost />} />
             </Routes>
         </Router>
     )
