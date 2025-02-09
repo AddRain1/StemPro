@@ -1,50 +1,52 @@
 .homepage-container {
-    display: flex; /* make the container flexible */
-    justify-content: center; /* center items horizontally */
-    align-items: center; /* center items vertically */
-    height: 100vh; /* full height of the viewport */
-    background-color: white;
+  display: flex; /* make the container flexible */
+  justify-content: center; /* center items horizontally */
+  align-items: center; /* center items vertically */
+  height: 100vh; /* full height of the viewport */
+  background-color: #222831;
 }
 
 .homepage-box {
-    text-align: center;
-    background-color: rgb(63, 142, 207);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #31363f;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .homepage-title {
-    font-size:24px;
-    margin-bottom: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #eeeeee;
 }
 
 .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* space between the buttons */
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* space between the buttons */
+  color: #eeeeee;
 }
 
 .homepage-button {
-    font-size: 16px;
-    padding: 10px 20px; /* 10px top and bottom, 20px left and right */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    background-color: white;
-    color: black;
+  font-size: 16px;
+  padding: 10px 20px; /* 10px top and bottom, 20px left and right */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #eeeeee;
+  color: black;
 }
 
 .homepage-button:hover {
-    background-color: rgb(225, 215, 215); /* Darkens the button's background color */
+  background-color: #76abae; /* Darkens the button's background color */
 }
 
 #createPostButton {
-    position: absolute;
-    bottom: 20%; /* distance from the bottom of the page */
-    left: 50%; /* position it in the center horizontally */
-    transform: translateX(-50%); /* adjust for the element's width */
-    justify-content: center;
-    background-color: grey;
+  position: absolute;
+  bottom: 20%; /* distance from the bottom of the page */
+  left: 50%; /* position it in the center horizontally */
+  transform: translateX(-50%); /* adjust for the element's width */
+  justify-content: center;
+  background-color: grey;
 }

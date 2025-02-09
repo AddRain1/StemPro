@@ -27,7 +27,7 @@ const Discussion = ({ postDetails }) => {
 
   return (
     <div>
-      <p>This is where users can discuss the problem.</p>
+      <h2>Discussion</h2>
       {comments.map((comment) => (
         <div key={comment._id}>
           <h3>User {comment.user}</h3>
