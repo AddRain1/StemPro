@@ -3,12 +3,12 @@ import { Link, Routes, Route, useParams, useNavigate } from "react-router-dom";
 import Question from "./Question";
 import Solution from "./Solution";
 import Discussion from "./Discussion";
-import ReplyIcon from '@mui/icons-material/Reply';
+import ReplyIcon from "@mui/icons-material/Reply";
 import "./ProblemDetail.css";
 import axios from "axios";
 
 const ProblemDetail = () => {
-  const { id } = useParams();
+  let { id, subject } = useParams();
   const navigate = useNavigate();
   const [postDetails, setPostDetails] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,46 +29,39 @@ const ProblemDetail = () => {
     fetchDetails();
   }, [id]);
 
-  // Sample list of problems with names
-  // const problemList = {
-  //   1: "Reverse a String",
-  //   2: "Find the Largest Element in an Array",
-  //   3: "Binary Search Implementation",
-  //   4: "Check if a Number is Prime",
-  //   5: "Find the Fibonacci Sequence",
-  // };
-
-  // Get the problem name based on the ID from the URL
-  // const problemName = problemList[id] || "Unknown Problem";
+  if (subject === "Computer Science") {
+    subject = "computer-science";
+  }
 
   return (
     <div className="problem-detail-container">
       {/* Left Section: Backwards Arrow, Problem Name, Buttons, and Content */}
       <div className="problem-left">
-        <button className="back-button" onClick={() => navigate('/computerscience')}>
+        <button className="back-button" onClick={() => navigate(`/${subject}`)}>
           <ReplyIcon fontSize="large" />
         </button>
-
         <div className="button-container">
           <Link
-            to={`/computerscience/problem/${id}/question`}
+            to={`/${subject}/problem/${id}/question`}
             className="tab-button"
           >
             Question
           </Link>
           <Link
-            to={`/computerscience/problem/${id}/solution`}
+            to={`/${subject}/problem/${id}/solution`}
             className="tab-button"
           >
             Solution
           </Link>
           <Link
-            to={`/computerscience/problem/${id}/discussion`}
+            to={`/${subject}/problem/${id}/discussion`}
             className="tab-button"
           >
             Discussion
           </Link>
         </div>
+        <h2>{postDetails.question}</h2>
+        <p>{postDetails.description}</p>
         {/* Display the selected section BELOW the buttons */}
         <div className="content-container">
           <Routes>
@@ -90,7 +83,7 @@ const ProblemDetail = () => {
 
       {/* Right Section: Notepad */}
       <div className="problem-right">
-        <h3>Notes</h3>
+        <h2>Notes</h2>
         <textarea
           className="notes-editor"
           placeholder="Type your thoughts here..."

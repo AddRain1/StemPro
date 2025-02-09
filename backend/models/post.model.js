@@ -20,7 +20,7 @@ const postSchema = new Schema({
   },
   answer: {
     type: String,
-    required: true,
+    required: false,
   },
   comments: [
     {

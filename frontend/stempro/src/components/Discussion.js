@@ -25,12 +25,9 @@ const Discussion = ({ postDetails }) => {
     }
   }, [postDetails.comments]);
 
-  console.log(comments);
-
   return (
     <div>
-      <h2>{postDetails.question}</h2>
-      <p>This is where users can discuss the problem.</p>
+      <h2>Discussion</h2>
       {comments.map((comment) => (
         <div key={comment._id}>
           <h3>User {comment.user}</h3>
