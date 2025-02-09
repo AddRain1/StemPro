@@ -1,33 +1,55 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './ComputerScience.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./ComputerScience.css";
+import axios from "axios";
 
 export const ComputerScience = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    // list of problems
-    const problems = [
-        { id: 1, title: "Reverse a String" },
-        { id: 2, title: "Find the Largest Element in an Array" },
-        { id: 3, title: "Binary Search Implementation" },
-        { id: 4, title: "Check if a Number is Prime" },
-        { id: 5, title: "Find the Fibonacci Sequence" },
-    ];
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const handleProblemClick = (id) => {
-        navigate(`/computerscience/problem/${id}`);
-    }
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:3000/posts/subject/computer-science"
+        );
+        setPosts(res.data); // Update state with the fetched data
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return (
-        <div className="computer-science-container">
-            <h1 className="computer-science-title">Computer Science Problems</h1>
-            <div classname="computer-science-problems">
-                {problems.map((problem) => (
-                        <div key={problem.id} className="computer-science-problem" onClick={() => handleProblemClick(problem.id)}>
-                            {problem.title}
-                        </div>
-                ))}
+    fetchPosts();
+  }, []);
+
+  const handleProblemClick = (id) => {
+    navigate(`/computerscience/problem/${id}`);
+  };
+
+  if (loading) return <p>Loading...</p>;
+
+  return (
+    <div className="computer-science-container">
+      <h1 className="computer-science-title">Computer Science Problems</h1>
+      <div className="computer-science-problems">
+        {posts.length === 0 ? (
+          <p>No problems found</p>
+        ) : (
+          posts.map((post) => (
+            <div
+              key={post._id}
+              className="computer-science-problem"
+              onClick={() => handleProblemClick(post._id)}
+            >
+              {post.question}
             </div>
-        </div>
-    );
+          ))
+        )}
+      </div>
+    </div>
+  );
 };
