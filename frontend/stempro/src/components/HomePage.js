@@ -8,27 +8,23 @@ const HomePage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track if the user is logged in
   const [error, setError] = useState("");
   const [user, setUser] = useState(null);
+  axios.defaults.withCredentials = true;
+
   useEffect(() => {
-    const checkAuthentication = async () => {
+    const fetchAuth = async () => {
       try {
-        const response = await fetch("http://localhost:3000/isLoggedIn", {
-          method: "GET",
-          credentials: "include", // Make sure cookies are sent
+        const res = await axios.get("http://localhost:3000/api/auth/status", {
+          withCredentials: true, // Ensure session cookies are sent
         });
-        const data = await response.json();
-        if (data.isLoggedIn) {
-          setIsAuthenticated(true);
-          setUser(data.user);
-        } else {
-          setIsAuthenticated(false);
-        }
+        console.log("User Data:", res.data);
+        setUser(res.data);
       } catch (error) {
-        console.error("Error checking authentication", error);
+        console.log("It failed");
+        // console.error("Authentication check failed:", error);
       }
     };
-
-    checkAuthentication();
-  }, []); // Empty dependency array to only run once when the component mounts
+    fetchAuth();
+  }, []);
 
   const handleComputerScience = () => {
     navigate("/computer-science");
@@ -75,7 +71,7 @@ const HomePage = () => {
     <div className="homepage-container">
       {/* Auth Container (Positioned at the Top Right) */}
       <div className="auth-container">
-        {isAuthenticated ? (
+        {user ? (
           <button className="auth-button" onClick={handleLogout}>
             Logout
           </button>

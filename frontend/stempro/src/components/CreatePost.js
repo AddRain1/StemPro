@@ -1,86 +1,95 @@
 import React, { useState, useEffect } from "react";
 import "./CreatePost.css";
 import { useNavigate } from "react-router-dom";
-import ReplyIcon from '@mui/icons-material/Reply';
+import ReplyIcon from "@mui/icons-material/Reply";
 import axios from "axios";
 
 export const CreatePost = () => {
-    const [question, setQuestion] = useState("");
-    const [subject, setSubject] = useState("Computer Science");
-    const [answer, setAnswer] = useState("");
-    const [description, setDescription] = useState("");
-    const [user, setUser] = useState(null);  // Store logged-in user
-    const navigate = useNavigate();
+  const [question, setQuestion] = useState("");
+  const [subject, setSubject] = useState("Computer Science");
+  const [answer, setAnswer] = useState("");
+  const [description, setDescription] = useState("");
+  const [user, setUser] = useState(null); // Store logged-in user
+  const navigate = useNavigate();
 
-    // Check if user is logged in when component mounts
-    useEffect(() => {
-    const checkAuth = async () => {
-        try {
-            const response = await axios.get("http://localhost:3000/users/auth/checkAuth", { withCredentials: true });
-            if (response.data.isAuthenticated) {
-                setUser(response.data.user);
-            } else {
-                setUser(null);
-            }
-        } catch (error) {
-            console.error("Authentication check failed:", error);
-            setUser(null);
-        }
+  // Check if user is logged in when component mounts
+  useEffect(() => {
+    const fetchAuth = async () => {
+      const res = await axios.get("http://localhost:3000/api/auth/status", {
+        withCredentials: true, // Ensure session cookies are sent
+      });
+      setUser(res.data);
+      console.log(res.data);
     };
 
-    checkAuth();
-    }, []);
+    fetchAuth();
+    // const checkAuth = async () => {
+    //     try {
+    //         const response = await axios.get("http://localhost:3000/users/auth/checkAuth", { withCredentials: true });
+    //         if (response.data.isAuthenticated) {
+    //             setUser(response.data.user);
+    //         } else {
+    //             setUser(null);
+    //         }
+    //     } catch (error) {
+    //         console.error("Authentication check failed:", error);
+    //         setUser(null);
+    //     }
+    // };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    // checkAuth();
+  }, []);
 
-        // Check if user is logged in
-        if (!user) {
-          alert("You must be logged in to create a post.");
-          navigate("/login"); // Redirect to login page
-          return;
-      }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        // Create a new post object
-        const newPost = {
-          question,
-          subject,
-          description,
-          answer: answer.trim() ? answer : "No answer provided",
-          user: user._id, 
-        };
-        try {
-        // Send a POST request to the server
-            await axios.post("http://localhost:3000/posts", newPost);
-            alert("Post Created Successfully!");
+    // Check if user is logged in
+    if (!user) {
+      alert("You must be logged in to create a post.");
+      navigate("/login"); // Redirect to login page
+      return;
+    }
 
-            // Reset Form
-            setQuestion("");
-            setSubject("");
-            setAnswer("");
-            setDescription("");
-
-            navigate("/homepage");
-        } catch (error) {
-            alert("Failed to create post. Please try again.");
-        }
+    // Create a new post object
+    const newPost = {
+      question,
+      subject,
+      description,
+      answer: answer.trim() ? answer : "No answer provided",
+      user: user._id,
     };
+    try {
+      // Send a POST request to the server
+      await axios.post("http://localhost:3000/posts", newPost);
+      alert("Post Created Successfully!");
 
-return (
+      // Reset Form
+      setQuestion("");
+      setSubject("");
+      setAnswer("");
+      setDescription("");
+
+      navigate("/homepage");
+    } catch (error) {
+      alert("Failed to create post. Please try again.");
+    }
+  };
+
+  return (
     <div className="create-post-container">
-        <button className="back-button" onClick={() => navigate('/')}>
-                <ReplyIcon fontSize="large"/>
-        </button>
+      <button className="back-button" onClick={() => navigate("/")}>
+        <ReplyIcon fontSize="large" />
+      </button>
       <h2>Create a New Post</h2>
       <form onSubmit={handleSubmit} className="post-form">
         {/* Question Input */}
         <label>Question:</label>
-        <input 
-          type="text" 
-          value={question} 
-          onChange={(e) => setQuestion(e.target.value)} 
-          required 
-          placeholder="Enter your question..." 
+        <input
+          type="text"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          required
+          placeholder="Enter your question..."
         />
 
         {/* Description Input */}
@@ -104,15 +113,17 @@ return (
 
         {/* Optional Answer */}
         <label>Answer (Optional):</label>
-        <textarea 
-          value={answer} 
-          onChange={(e) => setAnswer(e.target.value)} 
+        <textarea
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
           placeholder="Enter your answer..."
         ></textarea>
 
         {/* Submit Button */}
-        <button type="submit" className="submit-button">Submit</button>
+        <button type="submit" className="submit-button">
+          Submit
+        </button>
       </form>
     </div>
-);
+  );
 };
