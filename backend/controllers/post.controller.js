@@ -6,7 +6,7 @@ export const getPosts = async (req, res) => {
 };
 
 export const getPost = async (req, res) => {
-  const post = await Post.findOne({ slug: req.params.slug });
+  const post = await Post.findOne({ _id: req.params.postId });
   res.status(200).send(post);
 };
 
@@ -19,4 +19,9 @@ export const createPost = async (req, res) => {
 export const deletePost = async (req, res) => {
   const post = await Post.findByIdAndDelete(req.params.id);
   res.status(200).json("Post has been deleted");
+};
+
+export const updatePost = async (req, res) => {
+  const post = await Post.findByIdAndUpdate(req.params.id, req.body);
+  res.status(200).json("The post has been updated");
 };

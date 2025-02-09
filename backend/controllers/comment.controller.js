@@ -8,8 +8,7 @@ export const getCommentsFromPost = async (req, res) => {
 };
 
 export const getCommentsFromUser = async (req, res) => {
-  const post = await Post.findById({ _id: req.params.postId });
-  const comments = post.comments;
+  const comments = await Comment.find({ user: req.params.userId });
   res.status(200).send(comments);
 };
 
@@ -25,6 +24,14 @@ export const createComment = async (req, res) => {
 };
 
 export const deleteComment = async (req, res) => {
-  const comment = await Comment.findByIdAndDelete(req.params.id);
-  res.status(200).json("Post has been deleted");
+  const comment = await Comment.findByIdAndDelete(req.params.commentId);
+  res.status(200).json("Comment has been deleted");
+};
+
+export const updateComment = async (req, res) => {
+  const comment = await Comment.findByIdAndUpdate(
+    req.params.commentId,
+    req.body
+  );
+  res.status(200).json("Your comment has been edited");
 };
