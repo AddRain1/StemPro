@@ -23,6 +23,9 @@ const HomePage = () => {
   const handleChemistry = () => {
     navigate("/chemistry");
   };
+  const handleCreatePost = () => {
+    navigate("/createpost");
+  };
 
   return (
     <div className="homepage-container">
@@ -55,6 +58,13 @@ const HomePage = () => {
           </button>
           <button className="homepage-button" onClick={handleBiology}>
             Biology
+          </button>
+          <button
+            className="homepage-button"
+            id="createPostButton"
+            onClick={handleCreatePost}
+          >
+            CreatePost
           </button>
         </div>
       </div>
