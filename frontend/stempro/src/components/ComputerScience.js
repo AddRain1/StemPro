@@ -21,7 +21,7 @@ export const ComputerScience = () => {
     return (
         <div className="computer-science-container">
             <h1 className="computer-science-title">Computer Science Problems</h1>
-            <div classname="computer-science-problems">
+            <div className="computer-science-problems">
                 {problems.map((problem) => (
                         <div key={problem.id} className="computer-science-problem" onClick={() => handleProblemClick(problem.id)}>
                             {problem.title}

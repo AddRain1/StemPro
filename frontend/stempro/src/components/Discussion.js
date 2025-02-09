@@ -6,7 +6,7 @@ const Discussion = () => {
 
   return (
     <div>
-      <h2>Problem {id}: Discussion</h2>
+      <h2>Discussion</h2>
       <p>This is where users can discuss the problem.</p>
     </div>
   );

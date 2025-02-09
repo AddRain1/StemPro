@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Routes, Route, useParams } from "react-router-dom";
+import { Link, Routes, Route, useParams, useNavigate } from "react-router-dom";
 import Question from "./Question";
 import Solution from "./Solution";
 import Discussion from "./Discussion";
@@ -7,6 +7,7 @@ import "./ProblemDetail.css";
 
 const ProblemDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   // Sample list of problems with names
   const problemList = {
@@ -22,9 +23,12 @@ const ProblemDetail = () => {
 
   return (
     <div className="problem-detail-container">
-      {/* Left Section: Problem Name, Buttons, and Content */}
-      <div className="problem-left">
-        <h2>{problemName}</h2>  {/* Display the problem name */}
+      {/* Left Section: Backwards Arrow, Problem Name, Buttons, and Content */}
+        <div className="problem-left">
+          <button className="back-button" onClick={() => navigate('/computerscience')}>
+            <img src="/path/to/your/back-arrow-image.png" alt="Back" />
+          </button>
+          <h2>{problemName}</h2>  {/* Display the problem name */}
         <div className="button-container">
           <Link to={`/computerscience/problem/${id}/question`} className="tab-button">Question</Link>
           <Link to={`/computerscience/problem/${id}/solution`} className="tab-button">Solution</Link>

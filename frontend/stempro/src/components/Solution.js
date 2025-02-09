@@ -6,7 +6,7 @@ const Solution = () => {
 
   return (
     <div>
-      <h2>Problem {id}: Solution</h2>
+      <h2>Solution</h2>
       <p>This is where the solution will be explained.</p>
     </div>
   );

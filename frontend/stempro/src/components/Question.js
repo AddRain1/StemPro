@@ -6,7 +6,7 @@ const Question = () => {
 
   return (
     <div>
-      <h2>Problem {id}: Question</h2>
+      <h2>Question</h2>
       <p>This is where the problem question will be displayed.</p>
     </div>
   );
